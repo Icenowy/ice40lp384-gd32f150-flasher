@@ -1,0 +1,4 @@
+[submodule "libopencm3"]
+	path = libopencm3
+	url = https://github.com/Lichee-Pi/libopencm3
+	branch = gd32f150

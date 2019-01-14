@@ -7,6 +7,7 @@
 
 #include "systick.h"
 #include "send_bitstream.h"
+#include "dfu.h"
 
 void setup_clock(void)
 {
@@ -44,10 +45,20 @@ void setup_gpio(void)
 	gpio_clear(GPIOB, GPIO2);
 }
 
+void setup_mco()
+{
+	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO8);
+	gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, GPIO8);
+	gpio_set_af(GPIOA, 0, GPIO8);
+
+	rcc_set_mco(RCC_CFGR_MCO_HSECLK);
+}
+
 int main(void)
 {
 	setup_clock();
 	setup_gpio();
+	setup_mco();
 	setup_gpio_spi();
 	setup_systick();
 

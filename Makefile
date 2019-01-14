@@ -51,7 +51,7 @@ $(DMP): $(ELF)
 
 systick.o: systick.c systick.h
 send_bitstream.o: send_bitstream.c send_bitstream.h systick.h
-flasher_fw.o: flasher_fw.c systick.h send_bitstream.h
+flasher_fw.o: flasher_fw.c systick.h send_bitstream.h dfu.h
 dfu.o: dfu.c dfu.h
 
 $(LIBOPENCM3):

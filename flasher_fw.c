@@ -53,6 +53,5 @@ int main(void)
 
 	send_bitstream();
 
-	while (true)
-		;
+	dfu_main();
 }

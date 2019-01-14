@@ -1,6 +1,6 @@
 PROGRAM  = flasher
 CROSS   ?= arm-none-eabi-
-OBJS     = flasher_fw.o systick.o
+OBJS     = flasher_fw.o systick.o send_bitstream.o
 
 ###############################################################################
 
@@ -50,6 +50,8 @@ $(DMP): $(ELF)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 systick.o: systick.c systick.h
+send_bitstream.o: send_bitstream.c send_bitstream.h systick.h
+flasher_fw.o: flasher_fw.c systick.h send_bitstream.h
 
 $(LIBOPENCM3):
 	CFLAGS="$(CFLAGS)" ${MAKE} -C libopencm3 $(OPENCM3_MK) V=1
